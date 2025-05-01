@@ -1,0 +1,128 @@
+/* styles.css */
+
+/* General layout */
+body {
+    background: #f9fafb;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, #4285f4, #34a853, #fbbc05, #ea4335);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 5s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0%; }
+    50% { background-position: 100%; }
+    100% { background-position: 0%; }
+}
+
+/* Spinner loading */
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #4285f4;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
+
+/* Input & button */
+input, select, button {
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.4);
+}
+
+button {
+    background: linear-gradient(90deg, #4285f4, #34a853);
+    color: white;
+    font-weight: 600;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #ea4335, #fbbc05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Table style */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background: #f1f3f4;
+    color: #202124;
+    font-weight: 600;
+}
+
+tr {
+    border-bottom: 1px solid #e0e0e0;
+    transition: background 0.3s ease;
+}
+
+tr:hover {
+    background: #f1f3f4;
+}
+
+a {
+    color: #1a73e8;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0c47b7;
+    text-decoration: underline;
+}
+
+/* Details row */
+.details-row {
+    background: #f8f9fa;
+    font-size: 0.9rem;
+    color: #5f6368;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Log area */
+#log p {
+    margin-bottom: 4px;
+    animation: fadeIn 0.3s ease;
+}
