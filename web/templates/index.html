@@ -94,6 +94,7 @@
                             <th class="py-2 px-4 text-left">Judul</th>
                             <th class="py-2 px-4 text-left">Jurnal</th>
                             <th class="py-2 px-4 text-left">Peringkat SINTA</th>
+                            <th class="py-2 px-4 text-left">Relevansi</th>
                             <th class="py-2 px-4 text-left">Aksi</th>
                         </tr>
                     </thead>
@@ -106,13 +107,31 @@
                         <td class="py-2 px-4">${article.jurnal}</td>
                         <td class="py-2 px-4">${article.peringkat_sinta}</td>
                         <td class="py-2 px-4">
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-blue-600 h-2.5 rounded-full" style="width: ${Math.min(article.relevance_score * 5, 100)}%"></div>
+                            </div>
+                        </td>
+                        <td class="py-2 px-4">
                             <a href="${article.link}" target="_blank" class="text-blue-500 hover:underline">Lihat PDF</a>
                         </td>
                     </tr>
                     <tr id="details-${index}" class="hidden bg-gray-50">
-                        <td colspan="4" class="py-2 px-4">
+                        <td colspan="5" class="py-2 px-4">
                             <p class="text-gray-700"><strong>Ringkasan:</strong> ${article.snippet}</p>
                             <p class="text-gray-700"><strong>Website Jurnal:</strong> <a href="${article.website_jurnal}" target="_blank" class="text-blue-500 hover:underline">${article.website_jurnal}</a></p>
+                            <div class="mt-3">
+                                <h4 class="font-bold text-gray-700 mb-2">Analisis Leksikal:</h4>
+                                ${article.lexical_analysis.map(term => `
+                                    <div class="mb-2">
+                                        <p class="font-semibold">${term.term} (skor: ${term.score})</p>
+                                        ${term.connected_terms.length > 0 ? `
+                                            <p class="ml-4 text-sm">Term terkait:
+                                                ${term.connected_terms.map(t => `${t.term} (${t.count}x)`).join(', ')}
+                                            </p>
+                                        ` : '<p class="ml-4 text-sm text-gray-500">Tidak ada term terkait</p>'}
+                                    </div>
+                                `).join('')}
+                            </div>
                         </td>
                     </tr>
                 `;
